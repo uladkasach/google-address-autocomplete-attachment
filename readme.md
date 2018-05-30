@@ -12,7 +12,7 @@ It uses the `clientside-require` module to ipmort resources in a CommonJS fashio
 
 # Usage
 
-`npm install google-address-autocomplete-attachment`
+`npm install google-address-autocomplete-attachment --save`
 
 ```js
 (async function(){
