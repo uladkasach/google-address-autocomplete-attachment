@@ -12,7 +12,7 @@ var Full_Address_Autocomplete = function(input_element, api_key){
     if(typeof options == "undefined") options = {dropdown : true, on_blur : true, on_enter : true};
 
     // fulfill request
-    if(options.dropdown===true) this.append_dropdown(input_element);
+    if(options.dropdown===true) this.promise_dropdown = this.append_dropdown(input_element);
 
     // append listeners
     input_element.addEventListener('focus', this.handle_focus.bind(this));
