@@ -24,8 +24,9 @@ Api.prototype = {
     promise_autocomplete_suggestions : async function(search_string){
         await this.promise_initialized; // ensure that services are defined.
         if(search_string == "") return [];
+        // TODO - enable , types:["address"]
         var promise_predictions = new Promise((resolve, reject)=>{
-            this.services.autocomplete.getPlacePredictions({input:search_string, types:["address"]}, function(list, status){
+            this.services.autocomplete.getPlacePredictions({input:search_string}, function(list, status){
                 if(list==null) resolve([]);
                 resolve(list);
             });
