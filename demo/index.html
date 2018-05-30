@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title> Text Input Demo</title>
+        <script src = '/node_modules/clientside-require/dist/bundle.js'></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Exo:200');
+            html{
+                font-family: 'Exo', sans-serif;
+                color:black;
+                -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+            }
+        </style>
+    </head>
+    <body>
+        <br><br><br>
+        <div style = 'position:relative;'>
+            <input style = 'width:350'></div>
+        </div>
+        <script>
+            (async function(){
+                var Autocomplete = await load("google-address-autocomplete-attachment");
+                var autocomplete = new Autocomplete(document.querySelector('input'), {key:"AIzaSyC_ymlgPnlMmPFzUFhJrRa0vivYGVGCSEE", src:"/blank.html"});
+            })()
+        </script>
+    </body>
+</html>

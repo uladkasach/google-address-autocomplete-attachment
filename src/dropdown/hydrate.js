@@ -30,7 +30,7 @@ module.exports = function(dom, options){
     }
 
     dom.append_below = function(input_element){
-        dom.style.marginTop = input_element.offsetHeight;
+        // dom.style.marginTop = input_element.offsetHeight;
         input_element.parentNode.appendChild(dom) // insert as sibling
 
         // TODO - add keybinds which listen for ENTER and DOWN/UP arrow keys

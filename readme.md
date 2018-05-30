@@ -1,8 +1,14 @@
 # google-address-autocomplete-attachment
 
-Add the google address autocomplete dropdown to any text input, opensource. 
+Add the google address autocomplete dropdown to any text input, opensource.
 
-Effectively, this module re-implements the dropdown created by a google api in an open source fashion.  
+![google_address_autocomplete_attachment-demo](https://user-images.githubusercontent.com/10381896/40736168-40162de6-640b-11e8-8823-c8e29edb39a1.gif)
+
+
+# Overview
+Effectively, this module re-implements the dropdown created by a google api in an open source and highly modular method.  
+
+It uses the `clientside-require` module to ipmort resources in a CommonJS fashion (scoped js resources). It uses the `clientside-view-loader` to create the dropdown element. It uses `js-resource-loader` to load the google api in a cross-domain yet scoped fashion.
 
 # Usage
 
@@ -12,7 +18,6 @@ Effectively, this module re-implements the dropdown created by a google api in a
 (async function(){
     var Autocomplete = await load("/_controller/google_maps/autocomplete/full_address.js"); // load is provided by clientside-require
     var autocomplete = new Autocomplete(document.querySelector('input'), api_key);
-    console.log(autocomplete);
 })()
 ```
 
