@@ -76,10 +76,7 @@ Full_Address_Autocomplete.prototype = {
 
         // request suggestions
         try{
-            console.log("looking for suggestions");
             var suggestions = await this.api.promise_autocomplete_suggestions(raw_input);
-            console.log("recieved suggestions");
-            console.log(suggestions);
         } catch (err){
             console.error(err);
             suggestions = [];

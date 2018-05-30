@@ -1,6 +1,6 @@
 {
   "name": "google-address-autocomplete-attachment",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Add the google address autocomplete dropdown to any text input, opensource.",
   "main": "src/full_address.js",
   "scripts": {
