@@ -26,12 +26,23 @@ Api.prototype = {
         if(search_string == "") return [];
         // TODO - enable , types:["address"]
         var promise_predictions = new Promise((resolve, reject)=>{
-            this.services.autocomplete.getPlacePredictions({input:search_string}, function(list, status){
+            this.services.autocomplete.getPlacePredictions({input:search_string}, (list, status)=>{
                 if(list==null) resolve([]);
                 resolve(list);
             });
         })
         return promise_predictions;
     },
+    promise_place_from_place_id : async function(place_id){
+        await this.promise_initialized; // ensure that services are defined
+        if(typeof place_id !== "string") throw new Error("place id must be a string");
+        var promise_place = new Promise((resolve, reject)=>{
+            this.services.places.getDetails({placeId:place_id}, (place, status)=>{
+                if(status !== "OK") throw new Error("place could not be found");
+                resolve(place);
+            })
+        })
+        return promise_place;
+    }
 }
 module.exports = Api;

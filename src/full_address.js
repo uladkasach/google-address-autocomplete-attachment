@@ -30,6 +30,26 @@ var Full_Address_Autocomplete = function(input_element, api_key){
 }
 Full_Address_Autocomplete.prototype = {
     /*
+        data extraction methods
+    */
+    extract_address_data : async function(type_mappings){
+        var place_id = this.input_element.getAttribute('place_id');
+        var place = await this.api.promise_place_from_place_id(place_id);
+        var address = this.map_address_object_by_keys(place.address_components, type_mappings); // map the ugly google address_components structure into {key:value,...} format
+        return address;
+    },
+    map_address_object_by_keys : function(address_components, type_mappings){ // converts google's ugly address data structure to {key:value}
+        if(typeof type_mappings != "object") type_mappings = {}; // set default as empty
+        var mapped_address = {};
+        address_components.forEach((component)=>{
+            let type = component.types[0]; // default type is first type
+            if(typeof type_mappings[type] == "string") type = type_mappings[type]; // e.g., enable mapping `administrative_area_level_1` to `state`
+            mapped_address[type] = component.long_name;
+        })
+        return mapped_address;
+    },
+
+    /*
         action methods
     */
     handle_focus : async function(){

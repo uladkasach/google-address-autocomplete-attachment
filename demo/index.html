@@ -15,11 +15,16 @@
         <br><br><br>
         <div style = 'position:relative;'>
             <input style = 'width:350'></div>
+            <button>extract</button>
         </div>
         <script>
             (async function(){
                 var Autocomplete = await load("google-address-autocomplete-attachment");
                 var autocomplete = new Autocomplete(document.querySelector('input'), {key:"AIzaSyC_ymlgPnlMmPFzUFhJrRa0vivYGVGCSEE", src:"/blank.html"});
+                document.querySelector('button').onclick = async function(){
+                    var data = await autocomplete.extract_address_data();
+                    console.log(data);
+                }
             })()
         </script>
     </body>
